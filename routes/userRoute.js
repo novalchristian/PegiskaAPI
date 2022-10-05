@@ -16,7 +16,7 @@ Userroutes.use(bodyParser.urlencoded({ extended: false }));
 Userroutes.route("/")
   .get(middlewareCtrl.checkSession, getAllUser)
   .post(postUser);
-Userroutes.route("/id")
+Userroutes.route("/:id")
   .get(middlewareCtrl.checkSession, getUser)
   .put(middlewareCtrl.checkSession, putUser)
   .delete(middlewareCtrl.checkSession, delUser);
