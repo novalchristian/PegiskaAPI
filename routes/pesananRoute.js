@@ -44,7 +44,7 @@ Pesananroutes.route("/")
       { name: "ktpDirektur" },
       { name: "npwpPerusahaan" },
       { name: "aktaPendirian" },
-      { name: "aktaPerusahaan" },
+      { name: "aktaPerubahan" },
     ]),
     postPesanan
   );

@@ -30,10 +30,10 @@ const upload = multer({
 
 Blogroutes.route("/")
   .get(getAllBlog)
-  .post(middlewareCtrl.checkSession, upload.single("gambar"), postBlog);
+  .post(middlewareCtrl.checkSession, upload.single("blog"), postBlog);
 Blogroutes.route("/:id")
   .get(getBlog)
-  .put(middlewareCtrl.checkSession, upload.single("gambar"), putBlog)
+  .put(middlewareCtrl.checkSession, upload.single("blog"), putBlog)
   .delete(middlewareCtrl.checkSession, delBlog);
 
 export default Blogroutes;

@@ -45,7 +45,7 @@ export const postPesanan = async (req, res) => {
       newPesanan.aktaPendirian =
         "gambar/pesanan/" + req.files.aktaPendirian[0].filename;
       newPesanan.aktaPerusahaan =
-        "gambar/pesanan/" + req.files.aktaPerusahaan[0].filename;
+        "gambar/pesanan/" + req.files.aktaPerubahan[0].filename;
       await newPesanan.save();
       setContent(200, "Pesanan Berhasil Ditambahkan");
       return res.status(200).json(getContent());

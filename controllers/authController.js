@@ -62,7 +62,10 @@ const auth = async (req, res) => {
             }
           }
 
-          return res.status(200).json("Login Berhasil");
+          return res.status(200).json({
+            session: sessionHash,
+            id_user: findUser.id_user,
+          });
         } catch (error) {
           return res.status(500).json("Internal Server Error");
         }

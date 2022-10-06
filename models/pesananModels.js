@@ -43,7 +43,7 @@ const Pesanan = db.define(
     aktaPendirian: {
       type: DataTypes.STRING,
     },
-    aktaPerusahaan: {
+    aktaPerubahan: {
       type: DataTypes.STRING,
     },
   },

@@ -39,7 +39,7 @@ export const postBlog = async (req, res) => {
       return res.status(201).json(getContent());
     } else {
       const newBlog = new Blog(req.body);
-      newBlog.gambar = "gambar/blog/" + req.file.filename;
+      newBlog.blog = "gambar/blog/" + req.file.filename;
       await newBlog.save();
       setContent(200, "Blog Berhasil Ditambahkan");
       return res.status(200).json(getContent());

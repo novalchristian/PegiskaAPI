@@ -12,7 +12,7 @@ const Blog = db.define(
       autoIncrement: true,
       allowNull: false,
     },
-    gambar: {
+    blog: {
       type: DataTypes.STRING,
     },
     judul: {
