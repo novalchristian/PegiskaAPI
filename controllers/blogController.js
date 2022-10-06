@@ -39,6 +39,7 @@ export const postBlog = async (req, res) => {
       return res.status(201).json(getContent());
     } else {
       const newBlog = new Blog(req.body);
+      newBlog.gambar = "gambar/blog/" + req.file.filename;
       await newBlog.save();
       setContent(200, "Blog Berhasil Ditambahkan");
       return res.status(200).json(getContent());
@@ -57,12 +58,18 @@ export const putBlog = async (req, res) => {
   }
 
   try {
-    const updateBlog = await Blog.update(req.body, {
-      where: { id_blog: req.params.id },
-    });
-    await updateBlog;
-    setContent(200, "Blog Berhasil Diubah!");
-    return res.status(200).json(getContent());
+    if (req.file == undefined) {
+      setContent(201, "Image upload failed.");
+      return res.status(201).json(getContent());
+    } else {
+      const updateBlog = await Blog.update(req.body, {
+        where: { id_blog: req.params.id },
+      });
+      updateBlog.gambar = "gambar/blog/" + req.file.filename;
+      await updateBlog;
+      setContent(200, "Blog Berhasil Diubah!");
+      return res.status(200).json(getContent());
+    }
   } catch (error) {
     setContent(500, error);
     return res.status(500).json(getContent());

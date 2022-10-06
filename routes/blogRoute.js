@@ -33,7 +33,7 @@ Blogroutes.route("/")
   .post(middlewareCtrl.checkSession, upload.single("gambar"), postBlog);
 Blogroutes.route("/:id")
   .get(getBlog)
-  .put(middlewareCtrl.checkSession, putBlog)
+  .put(middlewareCtrl.checkSession, upload.single("gambar"), putBlog)
   .delete(middlewareCtrl.checkSession, delBlog);
 
 export default Blogroutes;

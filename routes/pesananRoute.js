@@ -14,7 +14,7 @@ const Pesananroutes = express.Router();
 Pesananroutes.use(bodyParser.json());
 Pesananroutes.use(bodyParser.urlencoded({ extended: false }));
 
-var storage = multer({
+const upload = multer({
   storage: multer.diskStorage({
     destination: "./gambar/pesanan",
     filename: function (req, file, cb) {
@@ -27,19 +27,27 @@ var storage = multer({
   limits: { fileSize: 2000000 },
 });
 
-var upload = multer({ storage: storage });
-
-var uploadMultiple = upload.fields([
-  { name: "nib", maxCount: 2 },
-  { name: "ktpDirektur", maxCount: 2 },
-  { name: "npwpPerusahaan", maxCount: 2 },
-  { name: "aktaPendirian", maxCount: 2 },
-  { name: "aktaPerusahaan", maxCount: 2 },
-]);
+// var uploadMultiple = upload.fields([
+//   { name: "nib", maxCount: 1 },
+//   { name: "ktpDirektur", maxCount: 1 },
+//   { name: "npwpPerusahaan", maxCount: 1 },
+//   { name: "aktaPendirian", maxCount: 1 },
+//   { name: "aktaPerusahaan", maxCount: 1 },
+// ]);
 
 Pesananroutes.route("/")
   .get(middlewareCtrl.checkSession, getAllPesanan)
-  .post(middlewareCtrl.checkSession, uploadMultiple, postPesanan);
+  .post(
+    middlewareCtrl.checkSession,
+    upload.fields([
+      { name: "nib" },
+      { name: "ktpDirektur" },
+      { name: "npwpPerusahaan" },
+      { name: "aktaPendirian" },
+      { name: "aktaPerusahaan" },
+    ]),
+    postPesanan
+  );
 Pesananroutes.route("/:id")
   .get(middlewareCtrl.checkSession, getPesanan)
   .delete(middlewareCtrl.checkSession, delPesanan);

@@ -54,6 +54,6 @@ const Pesanan = db.define(
 
 export default Pesanan;
 
-(async () => {
-  await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();

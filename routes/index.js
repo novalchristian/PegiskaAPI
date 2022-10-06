@@ -6,6 +6,9 @@ import blogRoutes from "./blogRoute.js";
 import pesananRoutes from "./pesananRoute.js";
 
 const indexRouter = express.Router();
+indexRouter.use(express.urlencoded({ extended: true }));
+
+indexRouter.use("/gambar", express.static("gambar"));
 indexRouter.use("/jasa", jasaRoutes);
 indexRouter.use("/auth", authRoutes);
 indexRouter.use("/user", userRoutes);

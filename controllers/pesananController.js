@@ -32,10 +32,24 @@ export const getPesanan = async (req, res) => {
 
 export const postPesanan = async (req, res) => {
   try {
-    const newPesanan = new Pesanan(req.body);
-    await newPesanan.save();
-    setContent(200, "Pesanan Berhasil Ditambahkan");
-    return res.status(200).json(getContent());
+    if (req.files == undefined) {
+      setContent(201, "Image upload failed.");
+      return res.status(201).json(getContent());
+    } else {
+      const newPesanan = new Pesanan(req.body);
+      newPesanan.nib = "gambar/pesanan/" + req.files.nib[0].filename;
+      newPesanan.ktpDirektur =
+        "gambar/pesanan/" + req.files.ktpDirektur[0].filename;
+      newPesanan.npwpPerusahaan =
+        "gambar/pesanan/" + req.files.npwpPerusahaan[0].filename;
+      newPesanan.aktaPendirian =
+        "gambar/pesanan/" + req.files.aktaPendirian[0].filename;
+      newPesanan.aktaPerusahaan =
+        "gambar/pesanan/" + req.files.aktaPerusahaan[0].filename;
+      await newPesanan.save();
+      setContent(200, "Pesanan Berhasil Ditambahkan");
+      return res.status(200).json(getContent());
+    }
   } catch (error) {
     setContent(500, error);
     return res.status(500).json(getContent());
