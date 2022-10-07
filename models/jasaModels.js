@@ -16,10 +16,10 @@ const Jasa = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    "20feet": {
+    feet20: {
       type: DataTypes.INTEGER,
     },
-    "40feet": {
+    feet40: {
       type: DataTypes.INTEGER,
     },
     lcl: {
