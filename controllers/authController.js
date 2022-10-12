@@ -10,14 +10,14 @@ const auth = async (req, res) => {
     });
 
     if (!findUser) {
-      return res.status(404).json("User tidak ditemukan");
+      return res.status(404).json("User Tidak Ditemukan !!!");
     } else {
       const inputPassword = crypto.AES.decrypt(
         findUser.password,
         process.env.AES_KEY
       ).toString(crypto.enc.Utf8);
 
-      console.log(inputPassword);
+      // console.log(inputPassword);
       if (inputPassword !== req.body.password) {
         return res.status(404).json("Password salah");
       } else {

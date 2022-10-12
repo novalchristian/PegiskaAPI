@@ -60,6 +60,7 @@ export const putBlog = async (req, res) => {
   try {
     if (req.file == undefined) {
       setContent(201, "Image upload failed.");
+      // console.log("res")
       return res.status(201).json(getContent());
     } else {
       const updateBlog = await Blog.update(req.body, {

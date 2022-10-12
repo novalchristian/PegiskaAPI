@@ -34,13 +34,13 @@ export const getUser = async (req, res) => {
 export const postUser = async (req, res) => {
   try {
     const newUser = new User(req.body);
-    newUser.password = crypto.AES.encrypt(
-      newUser.password,
-      process.env.AES_KEY
-    ).toString();
-    await newUser.save();
-    setContent(200, "User Berhasil Ditambahkan");
-    return res.status(200).json(getContent());
+      newUser.password = crypto.AES.encrypt(
+        newUser.password,
+        process.env.AES_KEY
+      ).toString();
+      await newUser.save();
+      setContent(200, "User Berhasil Ditambahkan");
+      return res.status(200).json(getContent());
   } catch (error) {
     setContent(500, error);
     return res.status(500).json(getContent());

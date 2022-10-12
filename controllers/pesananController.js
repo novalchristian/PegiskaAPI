@@ -44,7 +44,7 @@ export const postPesanan = async (req, res) => {
         "gambar/pesanan/" + req.files.npwpPerusahaan[0].filename;
       newPesanan.aktaPendirian =
         "gambar/pesanan/" + req.files.aktaPendirian[0].filename;
-      newPesanan.aktaPerusahaan =
+      newPesanan.aktaPerubahan =
         "gambar/pesanan/" + req.files.aktaPerubahan[0].filename;
       await newPesanan.save();
       setContent(200, "Pesanan Berhasil Ditambahkan");

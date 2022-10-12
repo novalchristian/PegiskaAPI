@@ -24,7 +24,7 @@ const upload = multer({
       );
     },
   }),
-  limits: { fileSize: 2000000 },
+  limits: { fileSize: 3000000 },
 });
 
 // var uploadMultiple = upload.fields([
