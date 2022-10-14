@@ -5,7 +5,7 @@ import {
   postUser,
   putUser,
   delUser,
-} from "../controllers/UserController.js";
+} from "../controllers/userController.js";
 import middlewareCtrl from "../controllers/middlewareController.js";
 import bodyParser from "body-parser";
 

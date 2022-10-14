@@ -8,6 +8,10 @@ import pesananRoutes from "./pesananRoute.js";
 const indexRouter = express.Router();
 indexRouter.use(express.urlencoded({ extended: true }));
 
+indexRouter.get("/", (req, res) => {
+  res.send("Selamat datang di PEGISKA API");
+});
+
 indexRouter.use("/gambar", express.static("gambar"));
 indexRouter.use("/jasa", jasaRoutes);
 indexRouter.use("/auth", authRoutes);
