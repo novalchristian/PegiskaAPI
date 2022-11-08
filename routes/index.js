@@ -4,6 +4,8 @@ import authRoutes from "./authRoute.js";
 import userRoutes from "./userRoute.js";
 import blogRoutes from "./blogRoute.js";
 import pesananRoutes from "./pesananRoute.js";
+import clientRoutes from "./clientRoute.js";
+import stakeholderRoutes from "./stakeholderRoute.js"
 
 const indexRouter = express.Router();
 indexRouter.use(express.urlencoded({ extended: true }));
@@ -18,5 +20,7 @@ indexRouter.use("/auth", authRoutes);
 indexRouter.use("/user", userRoutes);
 indexRouter.use("/blog", blogRoutes);
 indexRouter.use("/pesanan", pesananRoutes);
+indexRouter.use("/client", clientRoutes);
+indexRouter.use("/stakeholder", stakeholderRoutes)
 
 export default indexRouter;
